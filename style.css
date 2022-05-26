@@ -65,12 +65,15 @@ html{
 
 .home{
     display: flex;
-    background: url("images/dekho1.jpg") no-repeat center;
-    background-color:rgb(181, 76, 76);
-    height: 130vh;
+    /* background: url("images/Abhay6.jpg") no-repeat center;
+    background-image:url("images/Abhay7.jpg"); */
+    background-color:rgb(224, 77, 77);
+    height: 10vhpx;
+    /* width: 200px; */
   
     color: #fff;
-    min-height: 400px;
+ 
+
     font-family: 'Ubuntu',sans-serif;
     object-fit: cover;
 
@@ -98,7 +101,18 @@ html{
    font-weight: 500;
 }
 
-
+ /* .home .home-content .left{
+    margin-left: 20px;
+  }
+  .home .home-content .left img{
+      display: flex;
+      height: 500px;
+      width: 650px;
+      object-fit: cover;
+      border-radius: 6px;
+     /* padding-left: 600px; */
+  /* }  */
+ 
 
 
 

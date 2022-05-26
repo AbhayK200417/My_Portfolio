@@ -427,11 +427,12 @@ footer{
 footer span a{
     color: crimson;
     text-decoration: none;
-    display: inline-block;
+    text-align: justify;
+    /* display: flex; */
+    justify-content: space-between;
+    
+    
 
-}
-footer span i{
-    display: inline-block;
 }
 
 footer span a:hover{
@@ -439,6 +440,10 @@ footer span a:hover{
 }
 
 
+footer span {
+   margin: 200px;
+   
+}
 
 
 
