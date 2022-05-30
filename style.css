@@ -15,7 +15,7 @@ html{
 
 .max-width{
     max-width: 1300px;
-     padding: 0 80px;
+     padding: 0 40px;
     margin: auto; 
 }
 /* navbar styling */
@@ -43,7 +43,7 @@ html{
     font-weight: 600;
 }
 .navbar .logo a span{
-    color: rgb(31, 192, 143);
+    color: rgb(0, 0, 0);
 
 }
 .navbar .menu li{
@@ -79,6 +79,7 @@ html{
     font-family: 'Ubuntu',sans-serif;
     object-fit: cover;
 flex-wrap: wrap;
+justify-content: space-between;
 
 
 }
@@ -108,13 +109,13 @@ flex-wrap: wrap;
     margin-left: 20px;
   }
   .home  .left img{
-      height:   250px;
-      width: 340px,auto;
+      height:   40vh ;
+      width: 60vh;
       object-fit: cover;
       border-radius: 10px;
       /* padding-left: 600px; */
-      margin-left:50px;
-      margin-bottom: 00px;
+     margin: auto 60px;
+      
    
  
    }  
@@ -270,6 +271,7 @@ section{
   .about .about-content .right{
       flex: 100%;
   }
+
 
   /* skills section styling */
 
