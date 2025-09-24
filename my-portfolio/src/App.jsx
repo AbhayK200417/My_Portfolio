@@ -159,9 +159,11 @@ const EDUCATION = [
 ];
 
 const SKILLS = {
-  languages: ["C++", "C#", "HTML", "CSS", "JavaScript", "Python"],
+  languages: ["C++", "C#", "JavaScript", "Python"],
   software: ["Unity", "Unreal Engine", "Godot", "Git"],
-  courses: ["Introduction to Augmented Reality (Coursera)"],
+  courses: ["Introduction to Augmented Reality (Coursera)",
+    "Unreal Engine 5 C++: Advanced Frontend UI Programming"
+  ],
   languagesKnown: ["Hindi (SRW)", "English (SRW)"],
 };
 
@@ -223,13 +225,15 @@ const POSITIONS = [
   },
 ];
 
-const AWARDS = [{ title: "2nd Position, TinkerQuest, IIT Roorkee", year: "2024" }];
+const AWARDS = [{ title: "2nd Position, TinkerQuest, IIT Roorkee", year: "2024" },
+  { title: "Finalist - XR Creator Hackathon", year: "2025" }
+];
 
 const CONTACT = {
   email: "bhorayatabhay2004@gmail.com",
   phone: "7976347789",
-  github: "", // add your link or leave blank
-  linkedin: "", // add your link or leave blank
+  github: "https://github.com/AbhayK200417", // add your link or leave blank
+  linkedin: "https://www.linkedin.com/in/abhay200417/", // add your link or leave blank
 };
 
 /** -------------------------------------------------------
@@ -312,11 +316,11 @@ function Hero() {
               Game Dev • AR/VR • Tools
             </p>
             <h1 className="mt-3 text-4xl/tight sm:text-5xl/tight font-extrabold">
-              I build realtime experiences in{" "}
+              Building experiences with{" "}
               <span className="underline decoration-wavy decoration-teal-400/70">UE5 & Unity</span>
             </h1>
             <p className="mt-4 text-zinc-700 dark:text-zinc-300">
-              From Digital Twins to VR education — I design systems, tools, and visuals that run fast and feel great.
+              
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <a href="#projects" className="inline-flex items-center gap-2 rounded-2xl px-4 py-2 border hover:shadow-sm">
@@ -574,17 +578,16 @@ function About() {
         <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-center">About</h2>
         <div className="rounded-2xl border p-6 text-zinc-700 dark:text-zinc-300 space-y-3 text-center">
           <p>
-            I’m <strong>Abhay Kumar Bhorayat</strong> (B.Tech, IIT Roorkee, 2025). I build Unreal/Unity projects, XR
+            I’m <strong>Abhay Kumar Bhorayat</strong>. I build Unreal/Unity projects, XR
             simulations, and data-driven visualizations.
           </p>
           <p>
-            Recent work: a large-scale Digital Twin in UE that visualizes live sensor data, with runtime tools
-            (sectioning, measuring, gizmos) and performance tuning (profiling, async, GPU offload, pixel streaming).
+            Currently contributing as an Unreal Engine Developer at Proqio. Graduated from IIT Roorkee in 2025. With substantial experience as an XR Project Lead at Tinkering Lab and an AR/VR Developer at ArIES, I bring expertise in game development, PC games, and shader creation. My academic and professional journey highlights a strong foundation in immersive technologies and creative problem-solving within the gaming and XR domains.
           </p>
         </div>
       </Container>
     </section>
-  );
+  );  
 }
 
 function Contact() {
@@ -592,50 +595,21 @@ function Contact() {
     <section id="contact" className="py-14">
       <Container>
         <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-center">Contact</h2>
-        <div className="rounded-2xl border p-6">
-          <div className="grid gap-6 md:grid-cols-2">
-            <form
-              className="space-y-3"
-              onSubmit={(e) => {
-                e.preventDefault();
-                const fd = new FormData(e.currentTarget);
-                const name = fd.get("name");
-                const body = encodeURIComponent(fd.get("message"));
-                const mail = `mailto:${CONTACT.email}?subject=Portfolio%20contact%20from%20${encodeURIComponent(
-                  String(name || "Someone")
-                )}&body=${body}`;
-                window.location.href = mail;
-              }}
-            >
-              <input name="name" placeholder="Your name" className="w-full rounded-xl border px-3 py-2 bg-transparent" />
-              <input name="email" placeholder="Your email" className="w-full rounded-xl border px-3 py-2 bg-transparent" />
-              <textarea name="message" rows={5} placeholder="Message" className="w-full rounded-xl border px-3 py-2 bg-transparent" />
-              <button className="rounded-2xl border px-4 py-2 hover:shadow-sm inline-flex items-center gap-2">
-                <Mail className="h-4 w-4" /> Send
-              </button>
-            </form>
-            <div className="space-y-3 text-sm">
-              <a href={`mailto:${CONTACT.email}`} className="inline-flex items-center gap-2 rounded-xl border px-3 py-2">
-                <Mail className="h-4 w-4" /> {CONTACT.email}
-              </a>
-              {CONTACT.github && (
-                <a href={CONTACT.github} className="inline-flex items-center gap-2 rounded-xl border px-3 py-2">
-                  <Github className="h-4 w-4" /> GitHub
-                </a>
-              )}
-              {CONTACT.linkedin && (
-                <a href={CONTACT.linkedin} className="inline-flex items-center gap-2 rounded-xl border px-3 py-2">
-                  <Linkedin className="h-4 w-4" /> LinkedIn
-                </a>
-              )}
-              {CONTACT.phone && (
-                <div className="inline-flex items-center gap-2 rounded-xl border px-3 py-2">
-                  📞 {CONTACT.phone}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
+        <div className="flex flex-wrap justify-center gap-4">
+  <a href={`mailto:${CONTACT.email}`} className="inline-flex items-center gap-2 rounded-xl border px-4 py-2">
+    <Mail className="h-4 w-4" /> {CONTACT.email}
+  </a>
+  <a href={CONTACT.github} className="inline-flex items-center gap-2 rounded-xl border px-4 py-2">
+    <Github target="_blank" className="h-4 w-4" /> GitHub
+  </a>
+  <a href={CONTACT.linkedin} className="inline-flex items-center gap-2 rounded-xl border px-4 py-2">
+    <Linkedin  target="_blank" className="h-4 w-4" /> LinkedIn
+  </a>
+  <div className="inline-flex items-center gap-2 rounded-xl border px-4 py-2">
+    📞 {CONTACT.phone}
+  </div>
+</div>
+
       </Container>
     </section>
   );
@@ -665,13 +639,13 @@ export default function PortfolioApp() {
     <div className="min-h-dvh overflow-x-hidden text-zinc-900 dark:text-zinc-100 bg-white dark:bg-zinc-900">
       <NavBar />
       <Hero />
-      <Projects />
-      <Experience />
+      <About />
       <Education />
       <Skills />
+      <Experience />
+      <Projects />
       <Positions />
       <Awards />
-      <About />
       <Contact />
       <Footer />
     </div>
