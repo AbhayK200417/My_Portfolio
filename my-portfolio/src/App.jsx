@@ -160,7 +160,7 @@ const EDUCATION = [
 
 const SKILLS = {
   languages: ["C++", "C#", "JavaScript", "Python"],
-  software: ["Unity", "Unreal Engine", "Godot", "Git"],
+  software: ["Unity", "Unreal Engine", "Git"],
   courses: [
     "Unreal Engine 5 C++; Game Development",
     "Unreal Engine 5 C++: Advanced Frontend UI Programming",
