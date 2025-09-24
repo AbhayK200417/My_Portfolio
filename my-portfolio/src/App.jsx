@@ -370,111 +370,73 @@ function Projects() {
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((p) => {
-            const hasGithub = !!(p.links && p.links.github);
-            const hasLive = !!(p.links && p.links.live);
-            const hasLetter = !!(p.links && p.links.letter);
-            const hasPresentation = !!(p.links && p.links.presentation);
-            const hasVideo = !!(p.links && p.links.video);
-            const hasReadme = !!(p.links && p.links.readme);
-            const hasApk = !!(p.links && p.links.apk);
-
+            const hasGithub = !!p.links?.github;
+            const hasLive = !!p.links?.live;
+            const hasLetter = !!p.links?.letter;
+            const hasPresentation = !!p.links?.presentation;
+            const hasVideo = !!p.links?.video;
+            const hasReadme = !!p.links?.readme;
+            const hasApk = !!p.links?.apk;
 
             return (
-              <article
-                key={p.title}
-                className="rounded-2xl border p-5 hover:shadow-sm transition"
-              >
+              <article key={p.title} className="rounded-2xl border p-5 hover:shadow-sm transition">
                 <div className="flex items-start justify-between gap-4">
                   <h3 className="font-semibold">{p.title}</h3>
                   <span className="text-xs text-zinc-500 dark:text-zinc-400">{p.year}</span>
                 </div>
-                <p className="mt-2 text-sm text-zinc-700 dark:text-zinc-300">
-                  {p.summary}
-                </p>
+                <p className="mt-2 text-sm text-zinc-700 dark:text-zinc-300">{p.summary}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {p.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="text-[11px] rounded-full border px-2 py-0.5"
-                    >
-                      {t}
-                    </span>
+                    <span key={t} className="text-[11px] rounded-full border px-2 py-0.5">{t}</span>
                   ))}
                 </div>
 
-                {(hasGithub || hasLive || hasLetter || hasPresentation || hasVideo) && (
+                {/* keep ALL link buttons inside this one centered container */}
+                {(hasGithub || hasLive || hasLetter || hasPresentation || hasVideo || hasReadme || hasApk) && (
                   <div className="mt-4 flex flex-wrap items-center gap-3 justify-center">
                     {hasGithub && (
-                      <a
-                        href={p.links.github}
-                        className="inline-flex items-center gap-1 text-sm hover:underline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <a href={p.links.github} className="inline-flex items-center gap-1 text-sm hover:underline" target="_blank" rel="noopener noreferrer">
                         <Github className="h-4 w-4" /> Code
                       </a>
                     )}
                     {hasLive && (
-                      <a
-                        href={p.links.live}
-                        className="inline-flex items-center gap-1 text-sm hover:underline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <a href={p.links.live} className="inline-flex items-center gap-1 text-sm hover:underline" target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="h-4 w-4" /> Live
                       </a>
                     )}
                     {hasLetter && (
-                      <a
-                        href={p.links.letter}
-                        className="inline-flex items-center gap-1 text-sm hover:underline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <a href={p.links.letter} className="inline-flex items-center gap-1 text-sm hover:underline" target="_blank" rel="noopener noreferrer">
                         📄 Letter
                       </a>
                     )}
                     {hasPresentation && (
-                      <a
-                        href={p.links.presentation}
-                        className="inline-flex items-center gap-1 text-sm hover:underline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <a href={p.links.presentation} className="inline-flex items-center gap-1 text-sm hover:underline" target="_blank" rel="noopener noreferrer">
                         📊 Presentation
                       </a>
                     )}
                     {hasVideo && (
-                      <a
-                        href={p.links.video}
-                        className="inline-flex items-center gap-1 text-sm hover:underline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <a href={p.links.video} className="inline-flex items-center gap-1 text-sm hover:underline" target="_blank" rel="noopener noreferrer">
                         <Play className="h-4 w-4" /> Video
                       </a>
                     )}
-                     {hasReadme && (
-    <a href={p.links.readme} className="inline-flex items-center gap-1 text-sm hover:underline" target="_blank" rel="noopener noreferrer">
-      <FileText className="h-4 w-4" /> README
-    </a>
-  )}
+                    {hasReadme && (
+                      <a href={p.links.readme} className="inline-flex items-center gap-1 text-sm hover:underline" target="_blank" rel="noopener noreferrer">
+                        <FileText className="h-4 w-4" /> README
+                      </a>
+                    )}
+                    {hasApk && (
+                      <a
+                        href={p.links.apk}
+                        className="inline-flex items-center gap-1 text-sm hover:underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        type="application/vnd.android.package-archive"
+                      >
+                        <Smartphone className="h-4 w-4" /> APK
+                      </a>
+                    )}
                   </div>
                 )}
-                {hasApk && (
-  <a
-    href={p.links.apk}
-    className="inline-flex items-center gap-1 text-sm hover:underline"
-    // If hosted in /public, you can add download to prompt save:
-    // download
-    target="_blank"
-    rel="noopener noreferrer"
-    type="application/vnd.android.package-archive"
-  >
-    <Smartphone className="h-4 w-4" /> APK
-  </a>
-)}
-
               </article>
             );
           })}
