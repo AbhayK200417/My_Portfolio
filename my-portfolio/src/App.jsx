@@ -153,18 +153,20 @@ const EXPERIENCE = [
 ];
 
 const EDUCATION = [
-  { degree: "B.Tech. (Chemical Engineering)", place: "IIT Roorkee", year: "2025", details: ["Latest CGPA: 7.44"] },
-  { degree: "Class XII (CBSE)", place: "S R International Academy", year: "2021", details: ["90.80%"] },
-  { degree: "Class X (CBSE)", place: "Holy Heights Convent School", year: "2019", details: ["92.20%"] },
+  { degree: "B.Tech. (Chemical Engineering)", place: "IIT Roorkee", year: "2025", details: ["CGPA: 7.44"] },
+  
+  
 ];
 
 const SKILLS = {
   languages: ["C++", "C#", "JavaScript", "Python"],
   software: ["Unity", "Unreal Engine", "Godot", "Git"],
-  courses: ["Introduction to Augmented Reality (Coursera)",
-    "Unreal Engine 5 C++: Advanced Frontend UI Programming"
+  courses: [
+    "Unreal Engine 5 C++; Game Development",
+    "Unreal Engine 5 C++: Advanced Frontend UI Programming",
+    "Introduction to Augmented Reality (Coursera)"
   ],
-  languagesKnown: ["Hindi (SRW)", "English (SRW)"],
+  languagesKnown: ["Hindi (Native)", "English (Professional)"],
 };
 
 const POSITIONS = [
@@ -270,7 +272,7 @@ function NavBar() {
     <header className="sticky top-0 z-50 border-b bg-white/90 dark:bg-zinc-900/90 backdrop-blur">
       <Container className="flex items-center justify-between py-3">
         <a href="#home" className="flex items-center gap-2 font-semibold">
-          <Gamepad2 className="h-5 w-5" /> Abhay • Game Dev
+          <Gamepad2 className="h-5 w-5" /> Abhay • Game Programmer
         </a>
         <nav className="hidden md:flex items-center gap-6 text-sm">
           {NAV.map((n) => (
@@ -313,7 +315,7 @@ function Hero() {
           {/* Left: text */}
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
-              Game Dev • AR/VR • Tools
+              Game Programmer • AR/VR • Tools
             </p>
             <h1 className="mt-3 text-4xl/tight sm:text-5xl/tight font-extrabold">
               Building experiences with{" "}
