@@ -186,7 +186,7 @@ const POSITIONS = [
   {
     title: "Project Lead - XR Development",
     org: "Tinkering Labs",
-    date: "Apr 2024 – Present",
+    date: "April 2024 – May 2025",
     bullets: [
       "Led XR projects (VR/AR) with Unity/Unreal/ARCore/Vuforia/Oculus SDK.",
       "Mentored juniors in game development.",
@@ -195,7 +195,7 @@ const POSITIONS = [
   {
     title: "Member",
     org: "ARIES, IIT Roorkee",
-    date: "May 2023 – Present",
+    date: "May 2023 – May 2025",
     bullets: [
       "Mentored projects like Drone Shooter, AR Basketball, VR Plane Simulator.",
       "Co-built Know-IITR; ran workshops, competitions, GBMs, hackathons.",
@@ -221,7 +221,7 @@ const POSITIONS = [
   {
     title: "Events Team Member",
     org: "ARP, IIT Roorkee",
-    date: "Apr 2022 – Present",
+    date: "Apr 2022 – May 2025",
     bullets: [
       "Conducted events, interviews (50+), and operations.",
     ],
@@ -229,13 +229,13 @@ const POSITIONS = [
   {
     title: "Judge",
     org: "Mystic Pixel (Cognizance ‘24)",
-    date: "Mar 2024",
+    date: "Mar 2024 - April 2024",
     bullets: ["Organised metaverse game-making competition (150+ registrations)."],
   },
   {
     title: "Judge",
     org: "NanoNavigator (Cognizance ‘24)",
-    date: "Mar 2024",
+    date: "Mar 2024 - April 2024",
     bullets: ["Judged Micro-mouse competition (50k+ registrations), maintained transparency for 96 teams."],
   },
 ];
@@ -388,7 +388,7 @@ function Projects() {
           <h2 className="text-2xl sm:text-3xl font-bold">Projects</h2>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {PROJECTS.map((p) => {
+          {sortByYearDesc(PROJECTS).map((p) => {
             const hasGithub = !!p.links?.github;
             const hasLive = !!p.links?.live;
             const hasLetter = !!p.links?.letter;
@@ -471,7 +471,7 @@ function Experience() {
       <Container>
         <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Experience</h2>
         <div className="grid gap-6 md:grid-cols-2">
-          {EXPERIENCE.map((e, idx) => (
+          {sortByDateRangeDesc(EXPERIENCE).map((e, idx) => (
             <article key={idx} className="rounded-2xl border p-5">
               <div className="flex items-center justify-between gap-4">
                 <h3 className="font-semibold">{e.role} — {e.org}</h3>
@@ -494,7 +494,7 @@ function Education() {
       <Container>
         <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Education</h2>
         <div className="grid gap-6 md:grid-cols-3">
-          {EDUCATION.map((ed, i) => (
+          {sortByYearDesc(EDUCATION).map((ed, i) => (
             <article key={i} className="rounded-2xl border p-5">
               <h3 className="font-semibold">{ed.degree}</h3>
               <div className="text-sm text-zinc-500 dark:text-zinc-400">{ed.place} • {ed.year}</div>
@@ -551,7 +551,7 @@ function Positions() {
       <Container>
         <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Positions & Extracurriculars</h2>
         <div className="grid gap-6 md:grid-cols-2">
-          {POSITIONS.map((p, i) => (
+          {sortByDateRangeDesc(POSITIONS).map((p, i) => (
             <article key={i} className="rounded-2xl border p-5">
               <div className="flex items-center justify-between gap-4">
                 <h3 className="font-semibold">{p.title} — {p.org}</h3>
@@ -574,7 +574,7 @@ function Awards() {
       <Container>
         <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Awards</h2>
         <div className="grid gap-6 md:grid-cols-3">
-          {AWARDS.map((a, i) => (
+          {sortByYearDesc(AWARDS).map((a, i) => (
             <article key={i} className="rounded-2xl border p-5 text-center">
               <div className="font-semibold">{a.title}</div>
               {a.year && <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">{a.year}</div>}
@@ -666,3 +666,42 @@ export default function PortfolioApp() {
     </div>
   );
 }
+
+
+/** -------------------------------------------------------
+ *  UTILS: robust date/year parsing + sorters
+ *  ---------------------------------------------------- */
+
+// returns the most recent 4-digit year found; if "Present" => 9999
+function latestYearFromText(txt) {
+  if (!txt) return 0;
+  if (/present/i.test(String(txt))) return 9999;
+  const years = String(txt).match(/\b(19|20)\d{2}\b/g);
+  return years ? Math.max(...years.map(Number)) : 0;
+}
+
+// returns the earliest 4-digit year found
+function earliestYearFromText(txt) {
+  if (!txt) return 0;
+  const years = String(txt).match(/\b(19|20)\d{2}\b/g);
+  return years ? Math.min(...years.map(Number)) : 0;
+}
+
+// Simple sort by a.year (desc) for arrays that have a direct "year" field
+const sortByYearDesc = (arr) =>
+  [...arr].sort((a, b) => latestYearFromText(b.year ?? b.date ?? b.when) - latestYearFromText(a.year ?? a.date ?? a.when));
+
+// Sort by text ranges like "Apr 2024 – Present" or "2022 - 2023"
+// Primary key: latest (end) year desc; secondary: earliest (start) year desc
+const sortByDateRangeDesc = (arr) =>
+  [...arr].sort((a, b) => {
+    const af = a.date ?? a.when ?? a.duration ?? a.range ?? a.period ?? a.year ?? "";
+    const bf = b.date ?? b.when ?? b.duration ?? b.range ?? b.period ?? b.year ?? "";
+    const aEnd = latestYearFromText(af);
+    const bEnd = latestYearFromText(bf);
+    if (aEnd !== bEnd) return bEnd - aEnd;
+    const aStart = earliestYearFromText(af);
+    const bStart = earliestYearFromText(bf);
+    return bStart - aStart;
+  });
+
