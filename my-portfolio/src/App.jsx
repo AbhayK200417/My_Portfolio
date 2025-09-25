@@ -37,14 +37,27 @@ const PROJECTS = [
     year: "2024",
     summary:
       "Built an innovative AR app called 'paintARs (ARtistry)' during the XR Creator Hackathon. Our team secured a Top-40 ranking across India. The project demonstrated creativity in blending art with AR technology, enabling interactive painting experiences in mixed reality.",
-    tags: ["XR", "Hackathon", "AR", "Prototype"],
+    tags: ["Unity", "AR", "Creativity"],
     links: {
       letter: "/files/Letter of Appreciation - Abhay Kumar Bhorayat - XR Creator Hackathon.pdf",
       presentation: "https://docs.google.com/presentation/d/1YN5YKnqkqaBbyaY6Y9nIFWjF3i_KBKYLPL8XDoiAQEo/edit?slide=id.p4#slide=id.p4",
       github: "",
       live: "",
+      video: "" 
+    }
+  },
+   {
+    title: "Zombie IITR (Zombie Survival VR Game in IITR Campus)",
+    year: "2025",
+    summary:
+      "Led the development of 'Zombie IITR,' a VR zombie survival game set in the IIT Roorkee campus. Utilized Unity and Oculus SDK to create an immersive experience with realistic environments, AI-driven zombies, and engaging gameplay mechanics.",
+    tags: ["Unity", "VR", "Gameplay"],
+    links: {
+      github: "",
+      live: "",
       // Optional video link (YouTube, Drive preview, or direct .mp4)
-      video: "" // e.g., "https://www.youtube.com/watch?v=VIDEO_ID"
+      video: "https://drive.google.com/file/d/1XwarP_QulSW_rtkigI8RmAwfjLXPAaLP/view?usp=sharing",
+      
     }
   },
   {
