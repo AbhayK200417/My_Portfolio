@@ -301,7 +301,7 @@ function NavBar() {
               {n.label}
             </a>
           ))}
-          <a href="/resume.pdf" className="rounded-xl border px-3 py-1.5 text-xs font-medium hover:shadow-sm">
+          <a href="https://drive.google.com/file/d/1l7_ShMAw_Wr23d5AsSd9FlJ9sAF6pQ27/view?usp=sharing" className="rounded-xl border px-3 py-1.5 text-xs font-medium hover:shadow-sm">
             Resume
           </a>
           <button
